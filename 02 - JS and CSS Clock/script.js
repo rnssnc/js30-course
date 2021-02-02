@@ -2,12 +2,6 @@ secondHand = document.querySelector('.second-hand');
 minHand = document.querySelector('.min-hand');
 hourHand = document.querySelector('.hour-hand');
 
-var options = {
-  month: 'long',
-  day: 'numeric',
-  weekday: 'long',
-};
-
 function setDate() {
   const now = new Date();
   const seconds = now.getSeconds();
@@ -24,13 +18,14 @@ function setDate() {
     weekday: 'long',
   })}`;
 
-  const secondsDegrees = (seconds / 60) * 360 + 90;
-  const minsDegress = (mins / 60) * 360 + 90;
-  const hoursDegress = (hours / 60) * 360 + 90;
+  console.log(mins);
 
+  const secondsDegrees = (seconds / 60) * 360 + 90;
+  const minsDegrees = (mins / 60) * 360 + (seconds / 60) * 6 + 90;
+  const hoursDegrees = (hours / 12) * 360 + (mins / 60) * 30 + 90;
   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-  minHand.style.transform = `rotate(${minsDegress}deg)`;
-  hourHand.style.transform = `rotate(${hoursDegress}deg)`;
+  minHand.style.transform = `rotate(${minsDegrees}deg)`;
+  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 }
 
 setInterval(setDate, 1000);
