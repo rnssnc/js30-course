@@ -1,8 +1,5 @@
 function playSound(e) {
-  const audio = document.querySelector(
-    `audio[data-key="${e.key.charCodeAt(0)}"]`
-  );
-
+  const audio = document.querySelector(`audio[data-key="${e.key.charCodeAt(0)}"]`);
   if (!audio) return;
 
   audio.currentTime = 0; //Проиграть не дожидаясь конца текущего выполенения
